@@ -1,27 +1,37 @@
 import React from "react";
 import styled from 'styled-components';
 
-import pic1 from "../images/page01-01.png";
-import pic2 from "../images/page01-02.png";
+import pic1 from "../images/page06-01.jpg";
+import pic2 from "../images/page07-01.jpg";
+import pic3 from "../images/page07-02.jpg";
 
-import { AiOutlineArrowRight,AiFillSignal } from "react-icons/ai";
+import { AiFillSignal } from "react-icons/ai";
 import { FaWifi } from "react-icons/fa";
 import { IoBatteryFull } from "react-icons/io5";
+import { TfiAngleLeft } from "react-icons/tfi";
+import { FiFilter,FiThumbsUp } from "react-icons/fi";
+import { AiOutlineHome, AiFillCompass, AiOutlinePlusSquare,  } from "react-icons/ai";
+import { HiOutlineSquares2X2} from "react-icons/hi2";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+import { IoSettingsOutline } from "react-icons/io5";
+
+
+
 // NFTScreen01 大框框
 const NFTScreenContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
+  width: 100vw; /* Use viewport width */
+  height: 100vh; /* Use viewport height */
+  background: #F9FBFC;
   width: 375px;
   height: 812px;
-  background: #F9FBFC;
+
   border-radius: 32px;
   border: 1px solid black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  overflow: hidden; 
 `;
 
 // 時間9:41
@@ -47,30 +57,45 @@ const Righticon = styled.div`
   font-weight: bold;
 `;
 
-// 後面陰影
-const Shadow = styled.div`
-  position: absolute;
-  border-radius: 3px;
-  width: ${props => props.width};
-  height: ${props => props.height};
-  left: ${props => props.left};
-  top: ${props => props.top};
-  background: ${props => props.background};
-  filter: blur(40px);
+
+
+const Squares2X2 = styled(HiOutlineSquares2X2)`
+
+weight:bold;
+font-size:20px;
+
 `;
 
-// 圖片元件
-const Image = styled.div`
-  position:absolute;
-  width: ${props => props.width};
-  height: ${props => props.height};
-  left: ${props => props.left};
-  top: ${props => props.top};
-  background: ${props => props.background};
-  background-size: cover; 
-  border-radius: 24px;
-  transform: ${props => props.transform};
-  ${props => props.shadow && 'box-shadow: 8px -8px 44px rgba(0, 0, 0, 0.15);'}
+const Home = styled(AiOutlineHome)`
+weight:bold;
+font-size:20px;
+`;
+
+
+const Compass = styled(AiFillCompass)`
+weight:bold;
+font-size:20px;
+`;
+
+const PlusSquare = styled(AiOutlinePlusSquare)`
+weight:bold;
+font-size:20px;
+`;
+
+const ShoppingBag = styled(HiOutlineShoppingBag)`
+weight:bold;
+font-size:20px;
+`;
+
+const Settings = styled(IoSettingsOutline)`
+weight:bold;
+font-size:20px;
+`;
+
+
+const Filter = styled(FiFilter)`
+weight:bold;
+font-size:20px;
 `;
 
 
@@ -88,6 +113,175 @@ const Text = styled.div`
   line-height: ${props => props.lineHeight};
   color: ${props => props.color};
 `;
+
+
+// Header
+const Header = styled.div`
+  position: absolute;
+  width: 100%;
+  color: #101010;
+  font-weight: bold;
+  top :80px;
+  
+  overflow: hidden; /* 裁剪超出範圍的內容 */
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+`;
+
+// HeaderContent中文字
+const HeaderContent_text = styled.div`
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: ${props => props.fontWeight};
+  font-size: ${props => props.size};
+  line-height: ${props => props.lineHeight};
+  color: ${props => props.color};
+  
+  text-align: left;
+`;
+
+// HeaderContent中兩個icon並列
+const HeaderContent_twoIcon = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: cneter;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 56px;
+height: 24px;
+`;
+
+
+// Card
+const Card = styled.div`
+  position: absolute;
+  width: 80%;
+  height: 340px;
+  color: #101010;
+  font-weight: bold;
+  top: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+  padding: 0px;
+  gap: 18px;
+
+  overflow: hidden; /* 裁剪超出範圍的內容 */
+`;
+
+
+const Card_img = styled.div`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  left: ${props => props.left};
+  top: ${props => props.top};
+  background: ${props => props.background};
+  background-size: cover; 
+  border-radius: 24px;
+  transform: ${props => props.transform};
+  ${props => props.shadow && 'box-shadow: 8px -8px 44px rgba(0, 0, 0, 0.15);'}
+`;
+
+
+// Card中照片下的文字塊
+const Card_content_text = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+`;
+
+// Card中照片下的文字塊
+const Card_text = styled.div`
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: ${props => props.fontWeight};
+  font-size: ${props => props.size};
+  line-height: ${props => props.lineHeight};
+  color: ${props => props.color};
+  
+  text-align: left;
+`;
+
+
+// Card中的活動框 包含三元素
+// Card中照片下的文字塊
+const Card_people_and_button = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: left
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+`;
+
+const Card_people = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: left
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+`;
+
+
+const Card_people_img = styled.div`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  left: ${props => props.left};
+  top: ${props => props.top};
+  background: ${props => props.background};
+  background-size: cover; 
+  border-radius: 24px;
+  align-self: center; 
+  transform: ${props => props.transform};
+  ${props => props.shadow && 'box-shadow: 8px -8px 44px rgba(0, 0, 0, 0.15);'}
+`;
+
+
+const Card_people_name = styled.div`
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: ${props => props.fontWeight};
+  font-size: ${props => props.size};
+  line-height: ${props => props.lineHeight};
+  color: ${props => props.color};
+  
+  text-align: left;
+`;
+
+
+
+// 按鈕元件
+const Button = styled.button`
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  align-self: center; 
+  padding: 8px 12px;
+  left: ${props => props.left};
+  top: ${props => props.top};
+  gap: 8px;
+  width: ${props => props.width};
+  height: ${props => props.height};
+  background: ${props => props.background};
+  border-radius: 64px;
+`;
+
 const ButtonText = styled.div`
   position: relative;
   width: ${props => props.width};
@@ -102,29 +296,50 @@ const ButtonText = styled.div`
   color: ${props => props.color};
 `;
 
-const ArrowIcon = styled(AiOutlineArrowRight)`
-position: relative;
-weight:550;
-font-size:15px;
-lineHeight:21px;
-color:#FFFFFF;
-`;
 
-// 按鈕元件
-const Button = styled.button`
+// 圖片元件
+const Image = styled.div`
   position: absolute;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  padding: 8px 12px;
-  left: ${props => props.left};
-  top: ${props => props.top};
-  gap: 8px;
   width: ${props => props.width};
   height: ${props => props.height};
+  left: ${props => props.left};
+  top: ${props => props.top};
   background: ${props => props.background};
-  border-radius: 64px;
+  background-size: cover; 
+  border-radius: 24px;
+  transform: ${props => props.transform};
+  ${props => props.shadow && 'box-shadow: 8px -8px 44px rgba(0, 0, 0, 0.15);'}
 `;
+
+
+// 底下button列
+const Buttom = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  color: #101010;
+  font-weight: bold;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  
+  overflow: hidden; /* 裁剪超出範圍的內容 */
+
+  background: #FFFFFF;
+  box-shadow: 0px -1px 36px rgba(0, 0, 0, 0.1);
+`;
+
+const ButtomContent = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  align-self: center;
+  overflow: hidden; /* 裁剪超出範圍的內容 */ 
+`;
+
+
 
 
 const NFTScreen07 = () => {
@@ -138,88 +353,97 @@ const NFTScreen07 = () => {
         <IoBatteryFull/>
         </Righticon>
         
-        <Shadow 
-          width= "40px"
-          height= "40px"
-          left= "20px"
-          top= "180px"
-          background= "#F96687"
-        />
-        <Shadow 
-          width= "60px"
-          height= "60px"
-          left= "250px"
-          top= "280px"
-          background= "#A23B85"
-        />
-        <Shadow 
-          width= "50px"
-          height= "50px"
-          left= "250px"
-          top= "140px"
-          background= "#5AADDC"
-        />
-
-        <Image
-          width="295.4px"
-          height="183.48px"
-          left="40px"
-          top="165px"
-          background={`url(${pic1}), #D9D9D9`}
-          borderRadius="24px"
-          transform="matrix(0.8, 0.6, -0.58, 0.81, 0, 0)"
-        />
-        
-
-        <Image
-          width="292.89px"
-          height="185px"
-          left="16px"
-          top="272.71px"
-          background={`url(${pic2}), #D9D9D9`}
-          shadow
-          borderRadius="24px"
-          />
         <Text
-            width="343.01px"
-            height="90px"
+            width="89px"
+            height= '27px'
+            left = '143px'
+            top = '50px'
+            font-family= 'Poppins'
+            font-style = 'normal'
             weight={600}
-            left="16px"
-            top="522px"
-            size="32px"
-            lineHeight="45px"
+            size="18px"
             color="#101010"
         >
-        Hi, friend! get <br /> Collect your NFTs
+        Discovery
         </Text>
 
-        <Text
-            width="343.01px"
-            height="56px"
-            weight={400}
-            left="16px"
-            top="624px"
-            size="16px"
-            lineHeight="28px"
-            color="#939191"
-        >
-        Discover your various NFT collections from global content creators.
-        </Text>
+        <Header >
+        <HeaderContent>
+          <HeaderContent_text fontWeight="bold" size="18px" lineHeight="27px" color="#101010"
+          >New Update</HeaderContent_text>
+          <HeaderContent_twoIcon>
+            <Squares2X2 />
+            <Filter />
+          </HeaderContent_twoIcon>
+        </HeaderContent>
+        </Header>
 
-        <Button width="343px" height="54px" background="#0047FF" left="16px"
-            top="704px">
-            <ButtonText
-            width="70px"
-            height="21px"
-            weight={550}
-            size="14px"
-            lineHeight="21px"
-            color="#FFFFFF"
-            >
-            Let's Start
-            </ButtonText>
-            <ArrowIcon/>
-        </Button>
+        <Card>
+          <Card_img
+            width="309px"
+            height="200px"
+            background={`url(${pic2}), #D9D9D9`}
+            shadow
+            borderRadius="16px"
+          />
+          
+          <Card_content_text>
+            <Card_text fontWeight="bold" size="18px" lineHeight="27px" color="#101010"
+            >New Update</Card_text>
+            <Card_text fontWeight="bold" size="18px" lineHeight="27px" color="#101010"
+            >0.365 ETH</Card_text>
+          </Card_content_text>
+          
+          <Card_people_and_button>
+            <Card_people>
+                <Card_people_img 
+                  width="40px"
+                  height="40px"
+                  background={`url(${pic1}), #D9D9D9`}
+                  shadow
+                  borderRadius="16px" 
+                />
+                <Card_people_name fontWeight='600' size="16px" lineHeight="24px" color="#101010" >
+                  Selena Robert
+                  <br /><Card_people_name fontWeight='200' size="12px" lineHeight="24px" color="#101010" >
+                  Creator</Card_people_name>
+                </Card_people_name>
+            </Card_people>
+            
+            <Button width="112px" height="44px" background="#0047FF" left="16px">
+              <ButtonText
+              width="70px"
+              height="21px"
+              weight={550}
+              size="14px"
+              lineHeight="21px"
+              color="#FFFFFF"
+              >
+              Place Bid
+              </ButtonText>
+            </Button>
+          </Card_people_and_button>
+        </Card>
+
+        <Image
+          top='600px'
+          width="309px"
+          height="200px"
+          background={`url(${pic3}), #D9D9D9`}
+          shadow
+          borderRadius="16px"
+        />
+
+      <Buttom >
+        <ButtomContent>
+          <Home />
+          <Compass />
+          <PlusSquare />
+          <ShoppingBag />
+          <Settings />
+        </ButtomContent>
+        </Buttom>
+
     </NFTScreenContainer>
   );
 };
